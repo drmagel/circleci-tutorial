@@ -9,6 +9,8 @@ orbs:
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   pytest:
+    working_directory: hellow-world
+
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
@@ -20,7 +22,6 @@ jobs:
       - python/install-packages:
           pkg-manager: pip
           pip-dependency-file: circleci-requiremets.txt
-
       - run:
           name: "Python tests"
           command: pytest
