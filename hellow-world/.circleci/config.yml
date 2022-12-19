@@ -2,6 +2,11 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+parameters:
+  workdir:
+    type: string
+    default: 'hellow-world'
+
 orbs:
   python: circleci/python@2.1.1
 
@@ -19,11 +24,11 @@ jobs:
       - checkout
       - python/install-packages:
           pkg-manager: pip
-          pip-dependency-file: circleci-requiremets.txt
+          pip-dependency-file: <<pipeline.parameters.workdir>>/circleci-requiremets.txt
       - run:
           name: "Python tests"
           command: |
-            cd hellow-world
+            cd <<pipeline.parameters.workdir>>
             pytest
 
 # Invoke jobs via workflows
