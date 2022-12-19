@@ -24,7 +24,7 @@ jobs:
       - checkout
       - python/install-packages:
           pkg-manager: pip
-          pip-dependency-file: <<pipeline.parameters.workdir>>/circleci-requiremets.txt
+          pip-dependency-file: <<pipeline.parameters.workdir>>/circleci-requirements.txt
       - run:
           name: "Python tests"
           command: |
